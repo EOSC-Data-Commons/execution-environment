@@ -1,31 +1,32 @@
 # Execution Environment Vocabulary
 
-A small RDF vocabulary that specialises `schema:RuntimePlatform` for common
-scientific-software execution environments.
+A small RDF vocabulary that introduces `schema:RuntimePlatform` subclasses, to describe common
+scientific-software execution environments, such as _BinderEnvironment_, _ContainerEnvironment_, _HPCEnvironment_.
 
 The vocabulary complements [CodeMeta 3](https://w3id.org/codemeta/3.0) and the
-[Software Types profile](https://w3id.org/software-types). It introduces no new
-properties: CodeMeta's existing top-level `runtimePlatform` property links a
-software record to instances of the classes defined here.
+[Software Types profile](https://w3id.org/software-types). 
+
+No new properties are created! CodeMeta's existing top-level `runtimePlatform` property is used to link a
+software record to instances of the classes defined the  Execution Environment Vocabulary .
 
 ## Model
 
 ```text
-schema:SoftwareSourceCode
-  schema:runtimePlatform
-    schema:RuntimePlatform
-      specialised by this vocabulary
-
-schema:SoftwareSourceCode
-  codemeta:isSourceCodeOf
-    schema:SoftwareApplication
+Class schema:SoftwareSourceCode
+  - property schema:runtimePlatform
+      - range: Class schema:RuntimePlatform -
+        subclasses: specialised by this vocabulary
+  - property codemeta:isSourceCodeOf
+      - range: Class schema:SoftwareApplication
       classified by Software Types
 ```
 
-The two branches have different purposes:
+The two described properties have different purposes:
 
-- `runtimePlatform` describes where or how the software can run.
-- `isSourceCodeOf` describes the runnable products built from the source.
+- `schema:runtimePlatform` describes where or how the software can run.
+- `codemeta:isSourceCodeOf` describes the runnable products built from the source.
+
+
 
 ## Namespace
 
