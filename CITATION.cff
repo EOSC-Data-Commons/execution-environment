@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: Execution Environment Vocabulary
+message: If you use this vocabulary, please cite the repository release.
+type: software
+authors:
+  - family-names: Cushing
+    given-names: Reginald
+version: 0.2.0
+date-released: 2026-08-20
+license: Apache-2.0
+repository-code: https://github.com/recap/execution-environment

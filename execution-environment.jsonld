@@ -1,0 +1,128 @@
+{
+  "@context": {
+    "@base": "https://eosc-data-commons.github.io/execution-environment/",
+    "@vocab": "https://eosc-data-commons.github.io/execution-environment/",
+    "@language": "en",
+
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id"
+    },
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "created": {
+      "@id": "dcterms:created",
+      "@type": "xsd:date"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "relation": {
+      "@id": "dcterms:relation",
+      "@type": "@id"
+    },
+    "version": "schema:version"
+  },
+
+  "@graph": [
+    {
+      "@id": "",
+      "@type": "schema:DefinedTermSet",
+      "title": "Execution Environment Vocabulary",
+      "description": "A lightweight set of runtime-platform classes for describing environments in which scientific software can be executed.",
+      "created": "2026-08-20",
+      "license": "https://spdx.org/licenses/Apache-2.0.html",
+      "version": "0.2.0",
+      "relation": [
+        "https://w3id.org/codemeta/3.0",
+        "https://w3id.org/software-types",
+        "https://schema.org/RuntimePlatform"
+      ]
+    },
+    {
+      "@id": "BinderEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "Binder environment",
+      "comment": "A runtime platform that can be built by repo2docker and launched through BinderHub."
+    },
+    {
+      "@id": "ContainerEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "container environment",
+      "comment": "A runtime platform packaged or defined as a software container."
+    },
+    {
+      "@id": "DockerEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "ContainerEnvironment",
+      "label": "Docker environment",
+      "comment": "A container runtime platform represented by a Dockerfile or Docker-compatible image."
+    },
+    {
+      "@id": "OCIEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "ContainerEnvironment",
+      "label": "OCI environment",
+      "comment": "A container runtime platform represented by an OCI-compliant image or image manifest."
+    },
+    {
+      "@id": "ApptainerEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "ContainerEnvironment",
+      "label": "Apptainer environment",
+      "comment": "A container runtime platform represented by an Apptainer or Singularity definition or image."
+    },
+    {
+      "@id": "GalaxyEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "Galaxy environment",
+      "comment": "A runtime platform in which software tools or workflows are resolved and executed by Galaxy."
+    },
+    {
+      "@id": "CondaEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "Conda environment",
+      "comment": "A runtime platform defined through Conda packages, channels and environment configuration."
+    },
+    {
+      "@id": "NixEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "Nix environment",
+      "comment": "A runtime platform defined through Nix expressions or flakes."
+    },
+    {
+      "@id": "VirtualMachineEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "virtual machine environment",
+      "comment": "A runtime platform provided as or constructed from a virtual machine image."
+    },
+    {
+      "@id": "HPCEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:RuntimePlatform",
+      "label": "HPC environment",
+      "comment": "A runtime platform provided by a high-performance computing system, typically offering scheduled access to compute nodes and shared resources."
+    },
+    {
+      "@id": "SlurmEnvironment",
+      "@type": "rdfs:Class",
+      "subClassOf": "HPCEnvironment",
+      "label": "Slurm environment",
+      "comment": "An HPC runtime platform in which computational jobs are scheduled and managed using Slurm."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://eosc-data-commons.github.io/execution-environment/context.jsonld",
+    { "schema": "https://schema.org/" }
+  ],
+  "@id": "https://github.com/example/galaxy-workflow",
+  "@type": "SoftwareSourceCode",
+  "name": "Example Galaxy workflow",
+  "codeRepository": "https://github.com/example/galaxy-workflow",
+  "runtimePlatform": [
+    {
+      "@id": "#galaxy-environment",
+      "@type": "GalaxyEnvironment",
+      "name": "Galaxy environment",
+      "schema:hasPart": [
+        {
+          "@id": "https://github.com/example/galaxy-workflow/blob/main/workflows/tools.yml"
+        },
+        {
+          "@id": "https://github.com/example/galaxy-workflow/blob/main/containers.yml"
+        }
+      ]
+    }
+  ],
+  "isSourceCodeOf": {
+    "@id": "#galaxy-application",
+    "@type": "WebApplication",
+    "name": "Example Galaxy workflow application"
+  }
+}

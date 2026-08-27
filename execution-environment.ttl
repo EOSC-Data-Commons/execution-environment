@@ -1,0 +1,82 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix execenv: <https://eosc-data-commons.github.io/execution-environment/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+execenv:
+    a schema:DefinedTermSet ;
+    dcterms:title "Execution Environment Vocabulary"@en ;
+    dcterms:description "A lightweight set of runtime-platform classes for describing environments in which scientific software can be executed."@en ;
+    dcterms:created "2026-08-20"^^xsd:date ;
+    dcterms:license <https://spdx.org/licenses/Apache-2.0.html> ;
+    dcterms:relation <https://w3id.org/codemeta/3.0>,
+        <https://w3id.org/software-types>,
+        schema:RuntimePlatform ;
+    schema:version "0.2.0" .
+
+execenv:BinderEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "Binder environment"@en ;
+    rdfs:comment "A runtime platform that can be built by repo2docker and launched through BinderHub."@en .
+
+execenv:ContainerEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "container environment"@en ;
+    rdfs:comment "A runtime platform packaged or defined as a software container."@en .
+
+execenv:DockerEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf execenv:ContainerEnvironment ;
+    rdfs:label "Docker environment"@en ;
+    rdfs:comment "A container runtime platform represented by a Dockerfile or Docker-compatible image."@en .
+
+execenv:OCIEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf execenv:ContainerEnvironment ;
+    rdfs:label "OCI environment"@en ;
+    rdfs:comment "A container runtime platform represented by an OCI-compliant image or image manifest."@en .
+
+execenv:ApptainerEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf execenv:ContainerEnvironment ;
+    rdfs:label "Apptainer environment"@en ;
+    rdfs:comment "A container runtime platform represented by an Apptainer or Singularity definition or image."@en .
+
+execenv:GalaxyEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "Galaxy environment"@en ;
+    rdfs:comment "A runtime platform in which software tools or workflows are resolved and executed by Galaxy."@en .
+
+execenv:CondaEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "Conda environment"@en ;
+    rdfs:comment "A runtime platform defined through Conda packages, channels and environment configuration."@en .
+
+execenv:NixEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "Nix environment"@en ;
+    rdfs:comment "A runtime platform defined through Nix expressions or flakes."@en .
+
+execenv:VirtualMachineEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "virtual machine environment"@en ;
+    rdfs:comment "A runtime platform provided as or constructed from a virtual machine image."@en .
+
+execenv:HPCEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf schema:RuntimePlatform ;
+    rdfs:label "HPC environment"@en ;
+    rdfs:comment "A runtime platform provided by a high-performance computing system, typically offering scheduled access to compute nodes and shared resources."@en .
+
+execenv:SlurmEnvironment
+    a rdfs:Class ;
+    rdfs:subClassOf execenv:HPCEnvironment ;
+    rdfs:label "Slurm environment"@en ;
+    rdfs:comment "An HPC runtime platform in which computational jobs are scheduled and managed using Slurm."@en .

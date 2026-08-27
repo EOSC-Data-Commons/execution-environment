@@ -1,0 +1,44 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://eosc-data-commons.github.io/execution-environment/context.jsonld",
+    { "schema": "https://schema.org/" }
+  ],
+  "@id": "https://github.com/example/multi-platform-application",
+  "@type": "SoftwareSourceCode",
+  "name": "Example multi-platform application",
+  "codeRepository": "https://github.com/example/multi-platform-application",
+  "runtimePlatform": [
+    {
+      "@id": "#conda-environment",
+      "@type": "CondaEnvironment",
+      "schema:hasPart": {
+        "@id": "https://github.com/example/multi-platform-application/blob/main/environment.yml"
+      }
+    },
+    {
+      "@id": "#docker-environment",
+      "@type": [
+        "DockerEnvironment",
+        "OCIEnvironment"
+      ],
+      "schema:hasPart": {
+        "@id": "https://github.com/example/multi-platform-application/blob/main/Dockerfile"
+      }
+    },
+    {
+      "@id": "#slurm-environment",
+      "@type": "SlurmEnvironment",
+      "schema:hasPart": {
+        "@id": "https://github.com/example/multi-platform-application/blob/main/job.sbatch"
+      }
+    }
+  ],
+  "isSourceCodeOf": {
+    "@id": "#application",
+    "@type": "CommandLineApplication",
+    "name": "Example application",
+    "executableName": "analyse"
+  }
+}

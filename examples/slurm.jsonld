@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://eosc-data-commons.github.io/execution-environment/context.jsonld",
+    { "schema": "https://schema.org/" }
+  ],
+  "@id": "https://github.com/example/hpc-application",
+  "@type": "SoftwareSourceCode",
+  "name": "Example HPC application",
+  "codeRepository": "https://github.com/example/hpc-application",
+  "runtimePlatform": [
+    {
+      "@id": "#hpc-environment",
+      "@type": [
+        "SlurmEnvironment",
+        "CondaEnvironment",
+        "ApptainerEnvironment"
+      ],
+      "name": "Slurm, Conda and Apptainer environment",
+      "schema:hasPart": [
+        {
+          "@id": "https://github.com/example/hpc-application/blob/main/job.sbatch"
+        },
+        {
+          "@id": "https://github.com/example/hpc-application/blob/main/environment.yml"
+        },
+        {
+          "@id": "https://github.com/example/hpc-application/blob/main/container.def"
+        }
+      ]
+    }
+  ],
+  "isSourceCodeOf": {
+    "@id": "#hpc-application-product",
+    "@type": "CommandLineApplication",
+    "name": "Example Slurm application",
+    "executableName": "analyse"
+  }
+}

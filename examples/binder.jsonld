@@ -1,0 +1,35 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://eosc-data-commons.github.io/execution-environment/context.jsonld",
+    { "schema": "https://schema.org/" }
+  ],
+  "@id": "https://github.com/example/scientific-notebook",
+  "@type": "SoftwareSourceCode",
+  "name": "Example scientific notebook",
+  "codeRepository": "https://github.com/example/scientific-notebook",
+  "runtimePlatform": [
+    {
+      "@id": "#binder-environment",
+      "@type": [
+        "BinderEnvironment",
+        "CondaEnvironment"
+      ],
+      "name": "Binder and Conda environment",
+      "schema:hasPart": [
+        {
+          "@id": "https://github.com/example/scientific-notebook/blob/main/environment.yml"
+        },
+        {
+          "@id": "https://github.com/example/scientific-notebook/blob/main/postBuild"
+        }
+      ]
+    }
+  ],
+  "isSourceCodeOf": {
+    "@id": "#notebook",
+    "@type": "NotebookApplication",
+    "name": "Example Binder notebook"
+  }
+}

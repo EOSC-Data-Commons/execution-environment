@@ -1,0 +1,31 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://eosc-data-commons.github.io/execution-environment/context.jsonld",
+    { "schema": "https://schema.org/" }
+  ],
+  "@id": "https://github.com/example/cwl-workflow",
+  "@type": "SoftwareSourceCode",
+  "name": "Example CWL workflow",
+  "codeRepository": "https://github.com/example/cwl-workflow",
+  "runtimePlatform": [
+    {
+      "@id": "#cwl-container-environment",
+      "@type": "OCIEnvironment",
+      "name": "CWL container environment",
+      "schema:hasPart": {
+        "@id": "https://github.com/example/cwl-workflow/blob/main/workflow.cwl"
+      },
+      "schema:url": {
+        "@id": "https://ghcr.io/example/cwl-runtime"
+      }
+    }
+  ],
+  "isSourceCodeOf": {
+    "@id": "#cwl-application",
+    "@type": "CommandLineApplication",
+    "name": "Example CWL workflow application",
+    "executableName": "cwltool"
+  }
+}
