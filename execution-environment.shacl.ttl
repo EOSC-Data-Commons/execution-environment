@@ -1,0 +1,52 @@
+
+@prefix execenv: <https://eosc-data-commons.github.io/execution-environment/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix codemeta: <https://w3id.org/codemeta/3.0/> .
+
+# SHACL Shapes for Execution Environment Vocabulary
+
+execenv:SoftwareSourceCodeShape
+    a sh:NodeShape ;
+    sh:targetClass schema:SoftwareSourceCode ;
+    sh:property [
+        sh:path schema:runtimePlatform ;
+        sh:description "The runtime platform(s) on which the software can execute." ;
+        sh:nodeKind sh:IRI, sh:BlankNode ;
+        sh:node execenv:RuntimePlatformShape ;
+    ] ;
+    sh:property [
+        sh:path codemeta:isSourceCodeOf ;
+        sh:description "The runnable software products built from this source code." ;
+        sh:nodeKind sh:IRI, sh:BlankNode ;
+        sh:class schema:SoftwareApplication ;
+    ] .
+
+execenv:RuntimePlatformShape
+    a sh:NodeShape ;
+    sh:targetClass schema:RuntimePlatform ;
+    sh:description "Shape for validating runtime platform subclasses that specialize schema:RuntimePlatform." ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:minCount 1 ;
+        sh:in (
+            execenv:BinderEnvironment
+            execenv:ContainerEnvironment
+            execenv:DockerEnvironment
+            execenv:OCIEnvironment
+            execenv:ApptainerEnvironment
+            execenv:GalaxyEnvironment
+            execenv:CondaEnvironment
+            execenv:NixEnvironment
+            execenv:VirtualMachineEnvironment
+            execenv:HPCEnvironment
+            execenv:SlurmEnvironment
+        ) ;
+        sh:description "A runtime platform must have at least one type from the Execution Environment vocabulary." ;
+    ] ;
+    sh:property [
+        sh:path schema:hasPart ;
+        sh:description "References to environment definition files or configuration resources (Dockerfile, environment.yml, container.def, etc.)." ;
+        sh:nodeKind sh:IRI ;
+    ] .
